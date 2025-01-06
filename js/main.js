@@ -259,15 +259,19 @@ const productData = {
     }
 };
 
+// Remove the old product card click handlers and add new ones
 document.querySelectorAll('.product-card').forEach(card => {
-    card.addEventListener('click', (e) => {
-        const productId = card.dataset.product;
+    const productImage = card.querySelector('.product-image');
+    const productId = card.dataset.product;
+    
+    productImage.addEventListener('click', () => {
         showProductModal(productId);
     });
 });
 
 function showProductModal(productId) {
     const modal = document.getElementById('product-modal');
+    document.body.classList.add('modal-open');
     const data = productData[productId];
     
     // Fill modal with product data
@@ -283,18 +287,56 @@ function showProductModal(productId) {
     healthList.innerHTML = data.healthBenefits.map(benefit => `<li>${benefit}</li>`).join('');
     medicalList.innerHTML = data.medicalBenefits.map(benefit => `<li>${benefit}</li>`).join('');
     
+    // Set up add to cart button
+    const addToCartBtn = modal.querySelector('.add-to-cart-btn');
+    addToCartBtn.dataset.name = data.name;
+    addToCartBtn.dataset.price = parseInt(data.price);
+    
+    // Show modal
     modal.style.display = 'block';
+    
+    // Set up quantity controls
+    const qtyInput = modal.querySelector('.qty-input');
+    const minusBtn = modal.querySelector('.qty-btn.minus');
+    const plusBtn = modal.querySelector('.qty-btn.plus');
+    
+    minusBtn.onclick = (e) => {
+        e.stopPropagation();
+        const currentValue = parseInt(qtyInput.value);
+        if (currentValue > 1) qtyInput.value = currentValue - 1;
+    };
+    
+    plusBtn.onclick = (e) => {
+        e.stopPropagation();
+        qtyInput.value = parseInt(qtyInput.value) + 1;
+    };
+    
+    // Add to cart handler
+    addToCartBtn.onclick = (e) => {
+        e.stopPropagation();
+        const name = data.name;
+        const price = parseInt(data.price);
+        const quantity = parseInt(qtyInput.value);
+        const image = data.image;
+        
+        addToCart(name, price, quantity, image);
+        modal.style.display = 'none';
+    };
 }
 
-// Close modal when clicking the close button or outside
-document.querySelector('.close-modal').addEventListener('click', () => {
-    document.getElementById('product-modal').style.display = 'none';
+// Update modal close handlers
+document.querySelectorAll('.close-modal').forEach(closeBtn => {
+    closeBtn.addEventListener('click', () => {
+        closeBtn.closest('.modal').style.display = 'none';
+        document.body.classList.remove('modal-open');
+    });
 });
 
 window.addEventListener('click', (e) => {
-    const modal = document.getElementById('product-modal');
-    if (e.target === modal) {
-        modal.style.display = 'none';
+    if (e.target.classList.contains('modal')) {
+        e.target.style.display = 'none';
+        document.body.classList.remove('modal-open');
+        document.body.classList.remove('modal-open');
     }
 });
 
@@ -335,6 +377,167 @@ document.addEventListener('DOMContentLoaded', function() {
                     card.classList.add('hide');
                 }
             });
+        });
+    });
+});
+
+// Add this after your existing JavaScript
+
+// Cart functionality
+let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+// Cart icon click handler
+document.querySelector('.cart-icon').addEventListener('click', () => {
+    const cartModal = document.getElementById('cart-modal');
+    updateCartDisplay();
+    cartModal.style.display = 'block';
+});
+
+function updateCartDisplay() {
+    const cartItems = document.getElementById('cart-items');
+    const totalPrice = document.getElementById('total-price');
+    
+    cartItems.innerHTML = '';
+    let total = 0;
+    
+    cart.forEach(item => {
+        const itemTotal = item.price * item.quantity;
+        total += itemTotal;
+        
+        cartItems.innerHTML += `
+            <div class="cart-item">
+                <img src="${item.image}" alt="${item.name}">
+                <div class="cart-item-info">
+                    <h4>${item.name}</h4>
+                    <p>₹${item.price} × ${item.quantity}</p>
+                </div>
+                <div class="cart-item-controls">
+                    <p>₹${itemTotal}</p>
+                    <button onclick="removeFromCart('${item.name}')" class="remove-item">&times;</button>
+                </div>
+            </div>
+        `;
+    });
+    
+    totalPrice.textContent = total;
+}
+
+function updateCartCount() {
+    const cartCount = document.querySelector('.cart-count');
+    const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+    cartCount.textContent = totalItems;
+}
+
+function addToCart(name, price, quantity, image) {
+    const existingItem = cart.find(item => item.name === name);
+    
+    if (existingItem) {
+        existingItem.quantity += quantity;
+    } else {
+        cart.push({
+            name,
+            price,
+            quantity,
+            image
+        });
+    }
+    
+    localStorage.setItem('cart', JSON.stringify(cart));
+    updateCartCount();
+    updateCartDisplay();
+}
+
+function removeFromCart(productName) {
+    cart = cart.filter(item => item.name !== productName);
+    localStorage.setItem('cart', JSON.stringify(cart));
+    updateCartCount();
+    updateCartDisplay();
+}
+
+// Initialize cart functionality
+document.addEventListener('DOMContentLoaded', function() {
+    // Add event listeners to all Add to Cart buttons
+    document.querySelectorAll('.product-card').forEach(card => {
+        const addButton = card.querySelector('.add-to-cart-btn');
+        const qtyInput = card.querySelector('.qty-input');
+        const minusBtn = card.querySelector('.qty-btn.minus');
+        const plusBtn = card.querySelector('.qty-btn.plus');
+        
+        if (addButton && qtyInput && minusBtn && plusBtn) {
+            // Quantity controls
+            minusBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const currentValue = parseInt(qtyInput.value);
+                if (currentValue > 1) qtyInput.value = currentValue - 1;
+            });
+            
+            plusBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                qtyInput.value = parseInt(qtyInput.value) + 1;
+            });
+            
+            // Add to cart
+            addButton.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const name = addButton.dataset.name;
+                const price = parseInt(addButton.dataset.price);
+                const quantity = parseInt(qtyInput.value);
+                const image = card.querySelector('.product-image img').src;
+                
+                addToCart(name, price, quantity, image);
+            });
+        }
+    });
+
+    // Modal close functionality
+    document.querySelectorAll('.close-modal').forEach(closeBtn => {
+        closeBtn.addEventListener('click', () => {
+            closeBtn.closest('.modal').style.display = 'none';
+        });
+    });
+
+    // Close modal when clicking outside
+    window.addEventListener('click', (e) => {
+        if (e.target.classList.contains('modal')) {
+            e.target.style.display = 'none';
+        }
+    });
+
+    // Initialize cart count
+    updateCartCount();
+});
+
+// Add this to your existing JavaScript
+document.addEventListener('DOMContentLoaded', function() {
+    // Add click handler for product images
+    document.querySelectorAll('.product-image').forEach(image => {
+        image.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const card = image.closest('.product-card');
+            
+            // Remove active class from all other cards
+            document.querySelectorAll('.product-card').forEach(c => {
+                if (c !== card) c.classList.remove('active');
+            });
+            
+            // Toggle active class on clicked card
+            card.classList.toggle('active');
+        });
+    });
+
+    // Close product actions when clicking outside
+    document.addEventListener('click', (e) => {
+        if (!e.target.closest('.product-card')) {
+            document.querySelectorAll('.product-card').forEach(card => {
+                card.classList.remove('active');
+            });
+        }
+    });
+
+    // Prevent product actions from closing when clicking inside them
+    document.querySelectorAll('.product-actions').forEach(actions => {
+        actions.addEventListener('click', (e) => {
+            e.stopPropagation();
         });
     });
 });
