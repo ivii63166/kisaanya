@@ -40,7 +40,7 @@ const productData = {
         name: 'Bhat ki Dal',
         alsoKnownAs: 'Black Soybean',
         price: '₹120/kg',
-        image: 'assets/images_products/ahat_ki_Dal.png',
+        image: 'assets/images/products/Bhat_ki_Dal.png',
         healthBenefits: [
             'High protein content',
             'Aids in muscle growth',
@@ -56,7 +56,7 @@ const productData = {
         name: 'Urad Pahadi',
         alsoKnownAs: 'Split Black Gram',
         price: '₹140/kg',
-        image: 'assets/images_products/Urad_Pahadi.png',
+        image: 'assets/images/products/Urad_Pahadi.png',
         healthBenefits: [
             'Improves bone density',
             'Enhances skin texture',
