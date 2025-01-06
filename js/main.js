@@ -40,7 +40,7 @@ const productData = {
         name: 'Bhat ki Dal',
         alsoKnownAs: 'Black Soybean',
         price: '₹120/kg',
-        image: 'assets/images/products/Bhat_ki_Dal.png',
+        image: 'assets/images_products/Bhat_ki_Dal.png',
         healthBenefits: [
             'High protein content',
             'Aids in muscle growth',
@@ -50,13 +50,14 @@ const productData = {
             'Good for heart health',
             'Helps in managing diabetes',
             'Supports bone strength'
-        ]
+        ],
+        category: 'pulses'
     },
     'urad-pahadi': {
         name: 'Urad Pahadi',
         alsoKnownAs: 'Split Black Gram',
         price: '₹140/kg',
-        image: 'assets/images/products/Urad_Pahadi.png',
+        image: 'assets/images_products/Urad_Pahadi.png',
         healthBenefits: [
             'Improves bone density',
             'Enhances skin texture',
@@ -66,7 +67,8 @@ const productData = {
             'Supports liver function',
             'Aids in digestion',
             'Helps maintain healthy nervous system'
-        ]
+        ],
+        category: 'pulses'
     },
     'kala-chana': {
         name: 'Kala Chana',
@@ -82,7 +84,8 @@ const productData = {
             'Boosts immunity',
             'Good for controlling blood sugar levels',
             'Improves gut health'
-        ]
+        ],
+        category: 'pulses'
     },
     'pahadi-rajma': {
         name: 'Pahadi Rajma',
@@ -98,7 +101,8 @@ const productData = {
             'Supports heart health',
             'Helps in blood sugar control',
             'Improves digestion'
-        ]
+        ],
+        category: 'pulses'
     },
     'urad-dal': {
         name: 'Urad Dal',
@@ -114,7 +118,8 @@ const productData = {
             'Helps in nerve function',
             'Supports digestive health',
             'Maintains healthy blood pressure'
-        ]
+        ],
+        category: 'pulses'
     },
     'cauliflower': {
         name: 'Cauliflower',
@@ -130,7 +135,8 @@ const productData = {
             'Contains antioxidants',
             'Reduces inflammation',
             'Supports heart health'
-        ]
+        ],
+        category: 'vegetables'
     },
     'pahadi-onions': {
         name: 'Pahadi Onions',
@@ -146,7 +152,8 @@ const productData = {
             'Improves blood circulation',
             'Beneficial for heart health',
             'Anti-inflammatory properties'
-        ]
+        ],
+        category: 'vegetables'
     },
     'pahadi-potatoes': {
         name: 'Pahadi Potatoes',
@@ -162,7 +169,8 @@ const productData = {
             'Supports nerve function',
             'Good for muscle health',
             'Helps maintain blood pressure'
-        ]
+        ],
+        category: 'vegetables'
     },
     'orange-carrots': {
         name: 'Orange Carrots',
@@ -178,7 +186,8 @@ const productData = {
             'Good for skin health',
             'Boosts immune system',
             'Supports eye health'
-        ]
+        ],
+        category: 'fruits'
     },
     'round-radish': {
         name: 'Round Radish',
@@ -194,7 +203,8 @@ const productData = {
             'Detoxifies liver',
             'Helps in managing jaundice',
             'Anti-inflammatory properties'
-        ]
+        ],
+        category: 'vegetables'
     },
     'sweet-peas': {
         name: 'Sweet Peas',
@@ -210,7 +220,8 @@ const productData = {
             'Good for heart health',
             'Regulates blood sugar',
             'Supports immune system'
-        ]
+        ],
+        category: 'pulses'
     },
     'gaderi': {
         name: 'Gaderi',
@@ -226,7 +237,8 @@ const productData = {
             'Supports blood sugar control',
             'Boosts energy',
             'Improves digestive health'
-        ]
+        ],
+        category: 'pulses'
     },
     'gethi': {
         name: 'Gethi (गेठी)',
@@ -242,7 +254,8 @@ const productData = {
             'Beneficial for cardiovascular health',
             'Supports kidney function',
             'Helps in blood pressure regulation'
-        ]
+        ],
+        category: 'pulses'
     }
 };
 
@@ -299,4 +312,29 @@ document.querySelector('.qty-btn.plus').addEventListener('click', () => {
 // Update the modal close functionality to prevent closing when clicking inside the modal
 document.querySelector('.modal-content').addEventListener('click', (e) => {
     e.stopPropagation();
+});
+
+// Product filtering functionality
+document.addEventListener('DOMContentLoaded', function() {
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const productCards = document.querySelectorAll('.product-card');
+
+    filterButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            // Remove active class from all buttons
+            filterButtons.forEach(btn => btn.classList.remove('active'));
+            // Add active class to clicked button
+            button.classList.add('active');
+
+            const filterValue = button.getAttribute('data-filter');
+
+            productCards.forEach(card => {
+                if (filterValue === 'all' || card.getAttribute('data-category') === filterValue) {
+                    card.classList.remove('hide');
+                } else {
+                    card.classList.add('hide');
+                }
+            });
+        });
+    });
 });

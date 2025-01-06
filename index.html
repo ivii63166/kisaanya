@@ -43,15 +43,23 @@
                     <p>We connect organic farmers directly with consumers, ensuring you get the freshest, healthiest produce while supporting sustainable farming practices.</p>
                 </div>
                 <div class="about-image">
-                    <img src="assets/images/about.jpg" alt="Farmer in field">
+                    <img src="assets/about.png" alt="Farmer in field">
                 </div>
             </div>
         </section>
 
         <section id="products" class="section">
-            <h2>Our Products</h2>
+            <div class="products-header">
+                <h2>Our Products</h2>
+                <div class="filter-buttons">
+                    <button class="filter-btn active" data-filter="all">All</button>
+                    <button class="filter-btn" data-filter="pulses">Pulses</button>
+                    <button class="filter-btn" data-filter="vegetables">Vegetables</button>
+                    <button class="filter-btn" data-filter="fruits">Fruits</button>
+                </div>
+            </div>
             <div class="products-grid">
-                <div class="product-card" data-product="bhat-dal">
+                <div class="product-card" data-product="bhat-dal" data-category="pulses">
                     <div class="product-image">
                         <img src="assets/images_products/Bhat_ki_Dal.png" alt="Bhat ki Dal">
                     </div>
@@ -61,7 +69,7 @@
                     </div>
                 </div>
                 
-                <div class="product-card" data-product="urad-pahadi">
+                <div class="product-card" data-product="urad-pahadi" data-category="pulses">
                     <div class="product-image">
                         <img src="assets/images_products/Urad_Pahadi.png" alt="Urad Pahadi">
                     </div>
@@ -71,7 +79,7 @@
                     </div>
                 </div>
 
-                <div class="product-card" data-product="kala-chana">
+                <div class="product-card" data-product="kala-chana" data-category="pulses">
                     <div class="product-image">
                         <img src="assets/images_products/Kala_Chana.png" alt="Kala Chana">
                     </div>
@@ -81,7 +89,7 @@
                     </div>
                 </div>
 
-                <div class="product-card" data-product="pahadi-rajma">
+                <div class="product-card" data-product="pahadi-rajma" data-category="pulses">
                     <div class="product-image">
                         <img src="assets/images_products/Pahadi_Rajma.png" alt="Pahadi Rajma">
                     </div>
@@ -91,7 +99,7 @@
                     </div>
                 </div>
 
-                <div class="product-card" data-product="urad-dal">
+                <div class="product-card" data-product="urad-dal" data-category="pulses">
                     <div class="product-image">
                         <img src="assets/images_products/Urad_Pahadi.png" alt="Urad Dal">
                     </div>
@@ -101,7 +109,7 @@
                     </div>
                 </div>
 
-                <div class="product-card" data-product="cauliflower">
+                <div class="product-card" data-product="cauliflower" data-category="vegetables">
                     <div class="product-image">
                         <img src="assets/images_products/Cauliflower.png" alt="Cauliflower">
                     </div>
@@ -111,7 +119,7 @@
                     </div>
                 </div>
 
-                <div class="product-card" data-product="pahadi-onions">
+                <div class="product-card" data-product="pahadi-onions" data-category="vegetables">
                     <div class="product-image">
                         <img src="assets/images_products/Pahadi_Onions.png" alt="Pahadi Onions">
                     </div>
@@ -121,7 +129,7 @@
                     </div>
                 </div>
 
-                <div class="product-card" data-product="pahadi-potatoes">
+                <div class="product-card" data-product="pahadi-potatoes" data-category="vegetables">
                     <div class="product-image">
                         <img src="assets/images_products/Pahadi_Potatoes.png" alt="Pahadi Potatoes">
                     </div>
@@ -131,7 +139,7 @@
                     </div>
                 </div>
 
-                <div class="product-card" data-product="orange-carrots">
+                <div class="product-card" data-product="orange-carrots" data-category="fruits">
                     <div class="product-image">
                         <img src="assets/images_products/Orange_Carrots.png" alt="Orange Carrots">
                     </div>
@@ -141,7 +149,7 @@
                     </div>
                 </div>
 
-                <div class="product-card" data-product="round-radish">
+                <div class="product-card" data-product="round-radish" data-category="vegetables">
                     <div class="product-image">
                         <img src="assets/images_products/Round_Radish.png" alt="Round Radish">
                     </div>
@@ -151,7 +159,7 @@
                     </div>
                 </div>
 
-                <div class="product-card" data-product="sweet-peas">
+                <div class="product-card" data-product="sweet-peas" data-category="vegetables">
                     <div class="product-image">
                         <img src="assets/images_products/Sweet_Peas.png" alt="Sweet Peas">
                     </div>
@@ -161,7 +169,7 @@
                     </div>
                 </div>
 
-                <div class="product-card" data-product="gaderi">
+                <div class="product-card" data-product="gaderi" data-category="pulses">
                     <div class="product-image">
                         <img src="assets/images_products/Gaderi.png" alt="Gaderi">
                     </div>
@@ -171,7 +179,7 @@
                     </div>
                 </div>
 
-                <div class="product-card" data-product="gethi">
+                <div class="product-card" data-product="gethi" data-category="pulses">
                     <div class="product-image">
                         <img src="assets/images_products/Gethi.png" alt="Gethi">
                     </div>
@@ -219,12 +227,25 @@
         <section id="contact" class="section contact-section">
             <div class="contact-content">
                 <h2>Contact Us</h2>
-                <p>Get in touch with us for fresh organic produce</p>
                 <div class="contact-info">
                     <div class="contact-card">
-                        <img src="assets/images/contact.jpg" alt="Contact us">
                         <div class="contact-details">
-                            <p>Email: <a href="mailto:farmers@kisaanya.com">farmers@kisaanya.com</a></p>
+                            <div class="contact-method">
+                                <i class="icon-email"></i>
+                                <p>Email: <a href="mailto:farmers@kisaanya.com">farmers@kisaanya.com</a></p>
+                            </div>
+                            <div class="contact-method">
+                                <i class="icon-phone"></i>
+                                <p>Farmer Relationship & Customer Support: <a href="tel:+919876543210">+91 98765 43210</a></p>
+                            </div>
+                            <div class="contact-method">
+                                <i class="icon-location"></i>
+                                <p>Office Location: Bangalore, India</p>
+                            </div>
+                            <div class="contact-method">
+                                <i class="icon-harvest"></i>
+                                <p>Harvest Locations: Uttar Pradesh, Bihar, Rajasthan, Kerala, Uttarakhand, India</p>
+                            </div>
                         </div>
                     </div>
                 </div>

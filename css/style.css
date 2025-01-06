@@ -227,34 +227,71 @@ nav {
     background: var(--secondary);
     border-radius: 20px;
     margin: 2rem auto;
+    padding: 3rem 1rem;
 }
 
 .contact-content {
     text-align: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.contact-content h2 {
+    color: var(--primary);
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
 }
 
 .contact-card {
     background: white;
     border-radius: 15px;
-    overflow: hidden;
+    padding: 2rem;
     box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-    margin-top: 2rem;
-}
-
-.contact-card img {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
 }
 
 .contact-details {
-    padding: 2rem;
+    text-align: left;
 }
 
-.contact-details a {
+.contact-method {
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+}
+
+.contact-method i {
+    color: var(--primary);
+    font-size: 1.5rem;
+    min-width: 24px;
+}
+
+.contact-method p {
+    margin: 0;
+    line-height: 1.5;
+}
+
+.contact-method a {
     color: var(--primary);
     text-decoration: none;
     font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.contact-method a:hover {
+    color: var(--primary-light);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .contact-content h2 {
+        font-size: 2rem;
+    }
+    
+    .contact-method {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
 }
 
 /* Footer */
@@ -441,4 +478,55 @@ footer {
     .products-grid {
         grid-template-columns: 1fr;
     }
+}
+
+/* Products Section Styling */
+.products-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.products-header h2 {
+    color: var(--primary);
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.filter-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.filter-btn {
+    padding: 0.8rem 1.5rem;
+    border: 2px solid var(--primary);
+    background: transparent;
+    color: var(--primary);
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.filter-btn:hover {
+    background: var(--primary-light);
+    color: white;
+}
+
+.filter-btn.active {
+    background: var(--primary);
+    color: white;
+}
+
+/* Animation for filtering */
+.product-card {
+    transition: all 0.4s ease;
+}
+
+.product-card.hide {
+    opacity: 0;
+    transform: scale(0.8);
+    position: absolute;
 }
