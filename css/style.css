@@ -642,32 +642,41 @@ footer {
     }
 }
 
-/* Cart Icon Styling */
+/* Cart Icon Styles */
 .cart-icon {
     position: relative;
     cursor: pointer;
+    display: flex;
+    align-items: center;
     padding: 0.5rem;
+    border-radius: 50%;
+    transition: background-color 0.3s ease;
 }
 
-.cart-icon i {
-    font-size: 1.5rem;
+.cart-icon:hover {
+    background-color: rgba(76, 140, 43, 0.1);
+}
+
+.cart-icon .material-icons {
     color: var(--primary);
+    font-size: 24px;
 }
 
 .cart-count {
     position: absolute;
-    top: -5px;
-    right: -5px;
+    top: 0;
+    right: 0;
     background: var(--primary);
     color: white;
-    border-radius: 50%;
-    width: 20px;
-    height: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    height: 18px;
+    width: 18px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 0.8rem;
-    font-weight: bold;
+    border-radius: 50%;
+    transform: translate(25%, -25%);
 }
 
 /* Cart Modal Styling */
