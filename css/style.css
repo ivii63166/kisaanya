@@ -93,6 +93,7 @@ nav {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    max-width: 600px;
 }
 
 .hero h1 {
@@ -529,4 +530,64 @@ footer {
     opacity: 0;
     transform: scale(0.8);
     position: absolute;
+}
+
+/* Hero Section Updates */
+.hero-content {
+    max-width: 600px;
+}
+
+.tagline {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    color: var(--primary);
+    margin: 1rem 0;
+}
+
+.hero-description {
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+}
+
+/* About Section Updates */
+.about-features {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.feature {
+    text-align: center;
+    padding: 1rem;
+    background: var(--secondary);
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+}
+
+.feature:hover {
+    transform: translateY(-5px);
+}
+
+.feature i {
+    font-size: 2rem;
+    color: var(--primary);
+    margin-bottom: 0.5rem;
+}
+
+.feature p {
+    font-weight: 600;
+    color: #555;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .tagline {
+        font-size: 1.2rem;
+    }
+    
+    .about-features {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
 }
