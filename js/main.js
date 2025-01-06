@@ -40,7 +40,7 @@ const productData = {
         name: 'Bhat ki Dal',
         alsoKnownAs: 'Black Soybean',
         price: '₹120/kg',
-        image: 'https://images.unsplash.com/photo-1585996960303-91ce6fd7dac5?w=800&q=80',
+        image: 'assets/images_products/ahat_ki_Dal.png',
         healthBenefits: [
             'High protein content',
             'Aids in muscle growth',
@@ -56,7 +56,7 @@ const productData = {
         name: 'Urad Pahadi',
         alsoKnownAs: 'Split Black Gram',
         price: '₹140/kg',
-        image: 'https://images.unsplash.com/photo-1558818498-28c1e002b655?w=800&q=80',
+        image: 'assets/images_products/Urad_Pahadi.png',
         healthBenefits: [
             'Improves bone density',
             'Enhances skin texture',
@@ -72,7 +72,7 @@ const productData = {
         name: 'Kala Chana',
         alsoKnownAs: 'Black Chickpeas',
         price: '₹90/kg',
-        image: 'https://images.unsplash.com/photo-1515594848784-77172e3f21c4?w=800&q=80',
+        image: 'assets/images_products/Kala_Chana.png',
         healthBenefits: [
             'Rich in protein and iron',
             'Supports weight loss',
@@ -86,57 +86,57 @@ const productData = {
     },
     'pahadi-rajma': {
         name: 'Pahadi Rajma',
-        alsoKnownAs: 'Hill Kidney Beans',
+        alsoKnownAs: 'Red Kidney Beans',
         price: '₹180/kg',
-        image: 'https://images.unsplash.com/photo-1515594619304-49ddb12c8e63?w=800&q=80',
+        image: 'assets/images_products/Pahadi_Rajma.png',
         healthBenefits: [
-            'High in protein and fiber',
-            'Supports digestion',
-            'Rich in antioxidants'
+            'High in protein',
+            'Rich in antioxidants',
+            'Good source of fiber'
         ],
         medicalBenefits: [
-            'Reduces cholesterol',
             'Supports heart health',
-            'Helps in weight management'
+            'Helps in blood sugar control',
+            'Improves digestion'
         ]
     },
     'urad-dal': {
         name: 'Urad Dal',
         alsoKnownAs: 'Split Black Gram',
         price: '₹140/kg',
-        image: 'https://images.unsplash.com/photo-1558818498-28c1e002b655?w=800&q=80',
+        image: 'assets/images_products/Urad_Pahadi.png',
         healthBenefits: [
-            'Improves bone density',
-            'Enhances skin texture',
-            'Rich in B vitamins'
+            'High in protein',
+            'Rich in iron',
+            'Good source of folic acid'
         ],
         medicalBenefits: [
-            'Supports liver function',
-            'Aids in digestion',
-            'Helps maintain healthy nervous system'
+            'Helps in nerve function',
+            'Supports digestive health',
+            'Maintains healthy blood pressure'
         ]
     },
     'cauliflower': {
-        name: 'Cauliflower (फूलगोभी)',
+        name: 'Cauliflower',
         alsoKnownAs: 'Gobhi',
         price: '₹40/kg',
-        image: 'https://images.unsplash.com/photo-1568584711075-3d021a7c3ca3?w=800&q=80',
+        image: 'assets/images_products/Cauliflower.png',
         healthBenefits: [
             'Rich in vitamins C and K',
             'Promotes bone health',
             'Low in calories'
         ],
         medicalBenefits: [
-            'Contains antioxidants that reduce inflammation',
-            'Supports heart health',
-            'Boosts immune system'
+            'Contains antioxidants',
+            'Reduces inflammation',
+            'Supports heart health'
         ]
     },
     'pahadi-onions': {
-        name: 'Pahadi Onions (पहाड़ी प्याज)',
+        name: 'Pahadi Onions',
         alsoKnownAs: 'Hill Onions',
         price: '₹35/kg',
-        image: 'https://images.unsplash.com/photo-1518977956812-cd3dbadaaf31?w=800&q=80',
+        image: 'assets/images_products/Pahadi_Onions.png',
         healthBenefits: [
             'Boosts immunity',
             'Enhances metabolism',
@@ -149,14 +149,14 @@ const productData = {
         ]
     },
     'pahadi-potatoes': {
-        name: 'Pahadi Potatoes (पहाड़ी आलू)',
+        name: 'Pahadi Potatoes',
         alsoKnownAs: 'Hill Potatoes',
         price: '₹30/kg',
-        image: 'https://images.unsplash.com/photo-1518977676601-b53f82aba655?w=800&q=80',
+        image: 'assets/images_products/Pahadi_Potatoes.png',
         healthBenefits: [
-            'Rich in carbohydrates and potassium',
-            'Provides energy',
-            'Good source of fiber'
+            'Rich in carbohydrates',
+            'High in potassium',
+            'Provides energy'
         ],
         medicalBenefits: [
             'Supports nerve function',
@@ -165,10 +165,10 @@ const productData = {
         ]
     },
     'orange-carrots': {
-        name: 'Orange Carrots (संतरी गाजर)',
+        name: 'Orange Carrots',
         alsoKnownAs: 'Gajar',
         price: '₹45/kg',
-        image: 'https://images.unsplash.com/photo-1447175008436-054170c2e979?w=800&q=80',
+        image: 'assets/images_products/Orange_Carrots.png',
         healthBenefits: [
             'High in beta-carotene',
             'Improves vision',
@@ -176,47 +176,47 @@ const productData = {
         ],
         medicalBenefits: [
             'Good for skin health',
-            'Boosts the immune system',
+            'Boosts immune system',
             'Supports eye health'
         ]
     },
     'round-radish': {
-        name: 'Round Radish (गोल मूली)',
+        name: 'Round Radish',
         alsoKnownAs: 'Mooli',
         price: '₹25/kg',
-        image: 'https://images.unsplash.com/photo-1587735243615-c03f25aaff15?w=800&q=80',
+        image: 'assets/images_products/Round_Radish.png',
         healthBenefits: [
             'Supports digestion',
             'Low in calories',
-            'High in vitamin C'
+            'Rich in vitamins'
         ],
         medicalBenefits: [
-            'Detoxifies the liver',
+            'Detoxifies liver',
             'Helps in managing jaundice',
             'Anti-inflammatory properties'
         ]
     },
     'sweet-peas': {
-        name: 'Sweet Peas (मटर)',
+        name: 'Sweet Peas',
         alsoKnownAs: 'Matar',
         price: '₹60/kg',
-        image: 'https://images.unsplash.com/photo-1587735243664-acde286c5ff3?w=800&q=80',
+        image: 'assets/images_products/Sweet_Peas.png',
         healthBenefits: [
             'High in protein and fiber',
             'Promotes gut health',
-            'Rich in antioxidants'
+            'Rich in vitamins'
         ],
         medicalBenefits: [
             'Good for heart health',
-            'Regulates blood sugar levels',
-            'Supports digestive health'
+            'Regulates blood sugar',
+            'Supports immune system'
         ]
     },
     'gaderi': {
-        name: 'Gaderi (गढ़ेरी)',
+        name: 'Gaderi',
         alsoKnownAs: 'Taro Root',
         price: '₹50/kg',
-        image: 'https://images.unsplash.com/photo-1591638246754-77e0fbcea96c?w=800&q=80',
+        image: 'assets/images_products/Gaderi.png',
         healthBenefits: [
             'Rich in dietary fiber',
             'Good for digestion',
@@ -232,7 +232,7 @@ const productData = {
         name: 'Gethi (गेठी)',
         alsoKnownAs: 'Colocasia',
         price: '₹45/kg',
-        image: 'https://images.unsplash.com/photo-1591638247744-77e0fbcea96c?w=800&q=80',
+        image: 'assets/images_products/Gethi.png',
         healthBenefits: [
             'High in potassium',
             'Helps in maintaining electrolyte balance',
