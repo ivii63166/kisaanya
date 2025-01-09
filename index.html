@@ -387,29 +387,34 @@
     <div id="cart-modal" class="modal">
         <div class="modal-content cart-content">
             <span class="close-modal">&times;</span>
-            <h2>Your Cart</h2>
-            <div id="cart-items"></div>
+            <h2>Your Shopping Cart</h2>
+            <div id="cart-items">
+                <!-- Cart items will be dynamically inserted here -->
+            </div>
             <div class="cart-total">
-                <h3>Total: ₹<span id="total-price">0</span></h3>
+                <h3>
+                    <span>Total Amount</span>
+                    <span>₹<span id="total-price">0</span></span>
+                </h3>
             </div>
             <form id="checkout-form">
                 <div class="form-group">
-                    <label for="customer-name">Name:</label>
-                    <input type="text" id="customer-name" required>
+                    <label for="customer-name">Full Name</label>
+                    <input type="text" id="customer-name" required placeholder="Enter your full name">
                 </div>
                 <div class="form-group">
-                    <label for="customer-email">Email:</label>
-                    <input type="email" id="customer-email" required>
+                    <label for="customer-email">Email Address</label>
+                    <input type="email" id="customer-email" required placeholder="Enter your email">
                 </div>
                 <div class="form-group">
-                    <label for="customer-phone">Phone:</label>
-                    <input type="tel" id="customer-phone" required>
+                    <label for="customer-phone">Phone Number</label>
+                    <input type="tel" id="customer-phone" required placeholder="Enter your phone number">
                 </div>
                 <div class="form-group">
-                    <label for="customer-address">Address:</label>
-                    <textarea id="customer-address" required></textarea>
+                    <label for="customer-address">Delivery Address</label>
+                    <textarea id="customer-address" required placeholder="Enter your complete delivery address"></textarea>
                 </div>
-                <button type="submit" class="checkout-btn">Checkout</button>
+                <button type="submit" class="checkout-btn">Proceed to Checkout</button>
             </form>
         </div>
     </div>
