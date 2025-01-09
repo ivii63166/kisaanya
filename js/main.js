@@ -397,6 +397,17 @@ function updateCartDisplay() {
     const cartItems = document.getElementById('cart-items');
     const totalPrice = document.getElementById('total-price');
     
+    if (cart.length === 0) {
+        cartItems.innerHTML = `
+            <div class="empty-cart">
+                <i class="material-icons">shopping_cart</i>
+                <p>Your cart is empty</p>
+            </div>
+        `;
+        totalPrice.textContent = '0';
+        return;
+    }
+    
     cartItems.innerHTML = '';
     let total = 0;
     
