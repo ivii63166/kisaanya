@@ -10,14 +10,15 @@
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <script type="text/javascript">
         (function() {
-            emailjs.init("YOUR_PUBLIC_KEY");
+            emailjs.init("public_key");
         })();
     </script>
+    <link rel="icon" type="image/png" href="assets/logo.png">
 </head>
 <body>
     <header class="header">
         <nav>
-            <div class="logo">Kisaanya</div>
+            <a href="#" class="brand-name">Kisaanya</a>
             <div class="nav-links">
                 <a href="#about">About</a>
                 <a href="#products">Products</a>
@@ -27,16 +28,27 @@
                     <span class="cart-count">0</span>
                 </div>
             </div>
-            <div class="menu-toggle">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
         </nav>
     </header>
 
+    <!-- Add scroll indicator in hero section -->
+    <div class="scroll-indicator">
+        <span>Scroll Down</span>
+        <div class="mouse"></div>
+    </div>
+
+    <!-- Add back to top button -->
+    <div class="back-to-top">
+        <span class="material-icons">arrow_upward</span>
+    </div>
+
     <main>
         <section class="hero">
+            <div class="hero-logo">
+                <img src="assets/DALL·E 2025-01-11 21.22.34 - A clean and minimalistic logo for a business named 'Kisaanya' with a vibrant and fresh color palette. The logo features the name 'Kisaanya' in elegant.webp" 
+                     alt="Kisaanya Logo"
+                     loading="eager">
+            </div>
             <div class="hero-content">
                 <h1>Fresh Organic Food<br>Direct from Farmers</h1>
                 <p class="tagline">Farm to Fork: Freshness You Can Taste!</p>
