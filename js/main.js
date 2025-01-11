@@ -553,13 +553,11 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-// Update the contact form submission handler
+// Update the checkout form handler
 document.getElementById('checkout-form').addEventListener('submit', function(e) {
     e.preventDefault();
     
-    // Show loading state
     const submitButton = this.querySelector('button[type="submit"]');
-    const originalButtonText = submitButton.textContent;
     submitButton.textContent = 'Processing...';
     submitButton.disabled = true;
     
@@ -567,53 +565,105 @@ document.getElementById('checkout-form').addEventListener('submit', function(e) 
         name: document.getElementById('customer-name').value,
         email: document.getElementById('customer-email').value,
         phone: document.getElementById('customer-phone').value,
-        address: document.getElementById('customer-address').value,
-        items: cart.map(item => ({
-            name: item.name,
-            quantity: item.quantity,
-            price: item.price,
-            total: item.price * item.quantity
-        })),
-        totalAmount: cart.reduce((sum, item) => sum + (item.price * item.quantity), 0)
+        address: document.getElementById('customer-address').value
     };
 
-    // Format order details for email
+    // Format order details in a table-like structure
     const orderDetails = cart.map(item => 
-        `${item.name} - Quantity: ${item.quantity} - Price: ₹${item.price} - Total: ₹${item.price * item.quantity}`
-    ).join('\n');
+        `• ${item.name}\n  Quantity: ${item.quantity}\n  Price: ₹${item.price}\n  Total: ₹${item.price * item.quantity}`
+    ).join('\n\n');
+
+    const totalAmount = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
 
     // Send email using EmailJS
     emailjs.send(
-        'YOUR_SERVICE_ID',
-        'YOUR_TEMPLATE_ID',
+        'service_id',  // Replace with your EmailJS service ID
+        'template_id', // Replace with your EmailJS template ID
         {
             to_name: 'Kisaanya Team',
-            to_email: 'farmers@kisaanya.com',
             from_name: formData.name,
             from_email: formData.email,
             phone: formData.phone,
             address: formData.address,
             order_details: orderDetails,
-            total_amount: `₹${formData.totalAmount}`,
-            reply_to: formData.email
+            total_amount: `₹${totalAmount}`,
+            reply_to: formData.email,
+            subject: `New Order from ${formData.name}`
         }
     )
     .then(function(response) {
-        console.log('SUCCESS!', response.status, response.text);
-        alert('Order placed successfully! We will contact you shortly.');
-        cart = [];
-        localStorage.removeItem('cart');
-        updateCartDisplay();
-        updateCartCount();
-        document.getElementById('cart-modal').style.display = 'none';
-        document.getElementById('checkout-form').reset();
+        if(response.status === 200) {
+            alert('Order placed successfully! We will contact you shortly.');
+            cart = [];
+            localStorage.removeItem('cart');
+            updateCartDisplay();
+            updateCartCount();
+            document.getElementById('cart-modal').style.display = 'none';
+            document.getElementById('checkout-form').reset();
+        } else {
+            throw new Error('Email sending failed');
+        }
     })
     .catch(function(error) {
-        console.error('FAILED...', error);
+        console.error('Failed:', error);
         alert('There was an error processing your order. Please try again or contact us directly at farmers@kisaanya.com');
     })
     .finally(function() {
-        submitButton.textContent = originalButtonText;
+        submitButton.textContent = 'Proceed to Checkout';
         submitButton.disabled = false;
+    });
+});
+
+// Add scroll effects
+window.addEventListener('scroll', function() {
+    const header = document.querySelector('.header');
+    const backToTop = document.querySelector('.back-to-top');
+    
+    // Header scroll effect
+    if (window.scrollY > 100) {
+        header.classList.add('scrolled');
+        backToTop.classList.add('visible');
+    } else {
+        header.classList.remove('scrolled');
+        backToTop.classList.remove('visible');
+    }
+});
+
+// Smooth scroll for back to top
+document.querySelector('.back-to-top').addEventListener('click', function() {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+});
+
+// Add intersection observer for fade-in animations
+const observerOptions = {
+    threshold: 0.2,
+    rootMargin: '0px'
+};
+
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('fade-in');
+            observer.unobserve(entry.target);
+        }
+    });
+}, observerOptions);
+
+// Observe elements
+document.querySelectorAll('.product-card, .about-content, .contact-card').forEach(el => {
+    observer.observe(el);
+});
+
+// Add hover effect for product cards
+document.querySelectorAll('.product-card').forEach(card => {
+    card.addEventListener('mouseenter', function() {
+        this.style.transform = 'translateY(-15px)';
+    });
+    
+    card.addEventListener('mouseleave', function() {
+        this.style.transform = 'translateY(0)';
     });
 });
