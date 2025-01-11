@@ -256,6 +256,74 @@ const productData = {
             'Helps in blood pressure regulation'
         ],
         category: 'pulses'
+    },
+    'masoor-dal': {
+        name: 'Masoor Dal',
+        alsoKnownAs: 'Red Lentils',
+        price: '₹140/kg',
+        image: 'assets/images_products/Masoor Dal.png',
+        healthBenefits: [
+            'Rich in protein and fiber',
+            'Low in calories',
+            'High in iron'
+        ],
+        medicalBenefits: [
+            'Helps in weight management',
+            'Good for heart health',
+            'Improves digestion'
+        ],
+        category: 'pulses'
+    },
+    'arhar-dal': {
+        name: 'Arhar Dal',
+        alsoKnownAs: 'Toor Dal/Pigeon Pea',
+        price: '₹250/kg',
+        image: 'assets/images_products/Arhar Dal.png',
+        healthBenefits: [
+            'High protein content',
+            'Rich in dietary fiber',
+            'Good source of minerals'
+        ],
+        medicalBenefits: [
+            'Supports bone health',
+            'Helps in diabetes management',
+            'Boosts immunity'
+        ],
+        category: 'pulses'
+    },
+    'moong-dal': {
+        name: 'Moong Dal',
+        alsoKnownAs: 'Green Gram',
+        price: '₹170/kg',
+        image: 'assets/images_products/Moong Dal.png',
+        healthBenefits: [
+            'Easy to digest',
+            'High in protein',
+            'Rich in antioxidants'
+        ],
+        medicalBenefits: [
+            'Good for heart health',
+            'Helps in weight loss',
+            'Controls blood sugar'
+        ],
+        category: 'pulses'
+    },
+    'urad-dal': {
+        name: 'Urad Dal',
+        alsoKnownAs: 'Black Gram',
+        price: '₹250/kg',
+        image: 'assets/images_products/Urad Dal.png',
+        healthBenefits: [
+            'High in protein',
+            'Rich in iron',
+            'Good source of folic acid'
+        ],
+        medicalBenefits: [
+            'Strengthens nervous system',
+            'Improves digestive health',
+            'Boosts energy levels'
+        ],
+        category: 'pulses'
     }
 };
 
