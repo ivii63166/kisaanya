@@ -552,3 +552,68 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
+
+// Update the contact form submission handler
+document.getElementById('checkout-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    // Show loading state
+    const submitButton = this.querySelector('button[type="submit"]');
+    const originalButtonText = submitButton.textContent;
+    submitButton.textContent = 'Processing...';
+    submitButton.disabled = true;
+    
+    const formData = {
+        name: document.getElementById('customer-name').value,
+        email: document.getElementById('customer-email').value,
+        phone: document.getElementById('customer-phone').value,
+        address: document.getElementById('customer-address').value,
+        items: cart.map(item => ({
+            name: item.name,
+            quantity: item.quantity,
+            price: item.price,
+            total: item.price * item.quantity
+        })),
+        totalAmount: cart.reduce((sum, item) => sum + (item.price * item.quantity), 0)
+    };
+
+    // Format order details for email
+    const orderDetails = cart.map(item => 
+        `${item.name} - Quantity: ${item.quantity} - Price: ₹${item.price} - Total: ₹${item.price * item.quantity}`
+    ).join('\n');
+
+    // Send email using EmailJS
+    emailjs.send(
+        'YOUR_SERVICE_ID',
+        'YOUR_TEMPLATE_ID',
+        {
+            to_name: 'Kisaanya Team',
+            to_email: 'farmers@kisaanya.com',
+            from_name: formData.name,
+            from_email: formData.email,
+            phone: formData.phone,
+            address: formData.address,
+            order_details: orderDetails,
+            total_amount: `₹${formData.totalAmount}`,
+            reply_to: formData.email
+        }
+    )
+    .then(function(response) {
+        console.log('SUCCESS!', response.status, response.text);
+        alert('Order placed successfully! We will contact you shortly.');
+        cart = [];
+        localStorage.removeItem('cart');
+        updateCartDisplay();
+        updateCartCount();
+        document.getElementById('cart-modal').style.display = 'none';
+        document.getElementById('checkout-form').reset();
+    })
+    .catch(function(error) {
+        console.error('FAILED...', error);
+        alert('There was an error processing your order. Please try again or contact us directly at farmers@kisaanya.com');
+    })
+    .finally(function() {
+        submitButton.textContent = originalButtonText;
+        submitButton.disabled = false;
+    });
+});
