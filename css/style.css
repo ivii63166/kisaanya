@@ -1284,20 +1284,23 @@ footer {
 /* Update Product Card Image Styling */
 .product-image {
     position: relative;
-    height: 250px;
+    width: 100%;
+    height: 220px;
     overflow: hidden;
-    background: #f9f9f9;
+    background: #fff;
     display: flex;
     align-items: center;
     justify-content: center;
+    padding: 1rem;
+    border-radius: 15px 15px 0 0;
 }
 
 .product-image img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
     transition: transform 0.3s ease;
-    border-radius: 15px 15px 0 0;
+    padding: 0.5rem;
 }
 
 /* Enhanced Product Card Styling */
@@ -1306,8 +1309,10 @@ footer {
     border-radius: 15px;
     overflow: hidden;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    border: 1px solid rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
 }
 
 .product-card:hover {
@@ -1317,8 +1322,10 @@ footer {
 
 .product-info {
     padding: 1.5rem;
-    text-align: center;
-    background: white;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .product-info h3 {
@@ -1383,5 +1390,222 @@ footer {
 @media (max-width: 480px) {
     .product-image {
         height: 180px;
+    }
+}
+
+/* About Section Image Optimization */
+.about-image {
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.about-image img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+/* Product Image Optimization */
+.product-image {
+    position: relative;
+    width: 100%;
+    height: 220px;
+    overflow: hidden;
+    background: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    border-radius: 15px 15px 0 0;
+}
+
+.product-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+    padding: 0.5rem;
+}
+
+/* Hero Image Optimization */
+.hero-image {
+    position: relative;
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.hero-image img {
+    width: 100%;
+    height: auto;
+    max-height: 450px;
+    object-fit: contain;
+    border-radius: 30px;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 1200px) {
+    .about-image img {
+        height: 350px;
+    }
+    
+    .hero-image img {
+        max-height: 400px;
+    }
+}
+
+@media (max-width: 992px) {
+    .about-image img {
+        height: 300px;
+    }
+    
+    .hero-image img {
+        max-height: 350px;
+    }
+    
+    .product-image {
+        height: 200px;
+    }
+}
+
+@media (max-width: 768px) {
+    .about-image img {
+        height: 250px;
+    }
+    
+    .hero-image img {
+        max-height: 300px;
+    }
+    
+    .product-image {
+        height: 180px;
+    }
+}
+
+@media (max-width: 480px) {
+    .about-image img {
+        height: 200px;
+    }
+    
+    .hero-image img {
+        max-height: 250px;
+    }
+    
+    .product-image {
+        height: 160px;
+    }
+}
+
+/* Cart Modal Image Optimization */
+.cart-item img {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+    border-radius: 10px;
+    background: #fff;
+    padding: 5px;
+}
+
+/* Product Modal Image Optimization */
+.modal-image {
+    width: 100%;
+    height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #fff;
+    border-radius: 15px;
+    overflow: hidden;
+    padding: 1rem;
+}
+
+.modal-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 10px;
+}
+
+/* Products Grid Layout */
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 2rem;
+    padding: 2rem;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+/* Product Card Optimization */
+.product-card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    min-height: 350px;
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.product-info {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 1.5rem;
+}
+
+/* About Section Layout */
+.about-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.about-text {
+    order: 1;
+}
+
+.about-image {
+    order: 2;
+    width: 100%;
+    max-width: 500px;
+    justify-self: end;
+}
+
+.about-image img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive adjustments for about section */
+@media (max-width: 992px) {
+    .about-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    
+    .about-text {
+        order: 2;
+    }
+    
+    .about-image {
+        order: 1;
+        justify-self: center;
     }
 }

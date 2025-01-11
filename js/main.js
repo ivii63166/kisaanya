@@ -261,7 +261,7 @@ const productData = {
         name: 'Masoor Dal',
         alsoKnownAs: 'Red Lentils',
         price: '₹140/kg',
-        image: 'assets/images_products/masoor dal.webp',
+        image: 'assets/images_products/Masoor Dal.png',
         healthBenefits: [
             'Rich in protein and fiber',
             'Low in calories',
@@ -278,7 +278,7 @@ const productData = {
         name: 'Arhar Dal',
         alsoKnownAs: 'Toor Dal/Pigeon Pea',
         price: '₹250/kg',
-        image: 'assets/images_products/Arhar dal.webp',
+        image: 'assets/images_products/Arhar Dal.png',
         healthBenefits: [
             'High protein content',
             'Rich in dietary fiber',
@@ -295,7 +295,7 @@ const productData = {
         name: 'Moong Dal',
         alsoKnownAs: 'Green Gram',
         price: '₹170/kg',
-        image: 'assets/images_products/Moong dal.webp',
+        image: 'assets/images_products/Moong Dal.png',
         healthBenefits: [
             'Easy to digest',
             'High in protein',
@@ -312,7 +312,7 @@ const productData = {
         name: 'Urad Dal',
         alsoKnownAs: 'Black Gram',
         price: '₹250/kg',
-        image: 'assets/images_products/Urad dal.webp',
+        image: 'assets/images_products/Urad Dal.png',
         healthBenefits: [
             'High in protein',
             'Rich in iron',
